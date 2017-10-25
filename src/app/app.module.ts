@@ -1,18 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import {
-	NgModule,
-	ApplicationRef
-} from '@angular/core';
-import {
-	removeNgStyles,
-	createNewHosts,
-} from '@angularclass/hmr';
-import {
-	RouterModule,
-	PreloadAllModules
-} from '@angular/router';
+import { HttpModule, JsonpModule } from '@angular/http';
+import { NgModule, ApplicationRef } from '@angular/core';
+import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -26,11 +17,12 @@ import { NoContentComponent } from './pages/no-content';
 // Components
 import { HeaderModule, FooterModule } from './core/components';
 import { AuthenticationModule, BlueberriesModule } from './core/components';
+import { WeatherModule } from './core/components';
 
 // Pages
 import { HomeModule } from './pages/home';
-import { PageOneModule } from  './pages/page-one';
-import { PageTwoModule } from  './pages/page-two';
+import { PageOneModule } from './pages/page-one';
+import { PageTwoModule } from './pages/page-two';
 
 // Services
 
@@ -58,11 +50,13 @@ const APP_PROVIDERS = [
 		BrowserModule,
 		FormsModule,
 		HttpModule,
-		RouterModule.forRoot(ROUTES, {useHash: true, preloadingStrategy: PreloadAllModules}),
+		JsonpModule,
+		RouterModule.forRoot(ROUTES, { useHash: true, preloadingStrategy: PreloadAllModules }),
 		HeaderModule,
 		FooterModule,
 		AuthenticationModule,
 		BlueberriesModule,
+		WeatherModule,
 		HomeModule,
 		PageOneModule,
 		PageTwoModule

@@ -38,9 +38,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 	public ngOnInit() {
 		this.chartName = 'The biggest cities in the world';
-		this.chartService.getChartData((res) => {
-			this.chartData = res.json();
-		});
+		// this.chartService.getChartData((res) => {
+		// 	this.chartData = res.json();
+		// });
 
 		this.isLoading = false;
 		// this.todoServiceSubscription = this.todoService.getTodoItems().subscribe((res: TodoItem[]) => {

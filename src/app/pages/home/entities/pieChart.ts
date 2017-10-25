@@ -32,7 +32,8 @@ export class PieChart {
 				const midAngle = d.endAngle < Math.PI
 					? d.startAngle / 2 + d.endAngle / 2
 					: d.startAngle / 2 + d.endAngle / 2 + Math.PI;
-				return `translate(${this.label.centroid(d)[0]}, ${this.label.centroid(d)[1]}) rotate(-90) rotate(${midAngle * 180 / Math.PI})`;
+				return `translate(${this.label.centroid(d)[0]},
+					${this.label.centroid(d)[1]}) rotate(-90) rotate(${midAngle * 180 / Math.PI})`;
 			})
 			.attr('dy', '.35em')
 			.text((d) => d.data[this.displayParam])

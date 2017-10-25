@@ -1,0 +1,28 @@
+<section class="container">	
+	<form class="row offset_top" role="form">
+		<div class="input-group col-md-6">
+			<input type="text" class="form-control" id="cityName" placeholder="Enter the city" #city>
+			<span class="input-group-btn">
+				<button type="submit" class="btn btn-primary" (click)="sendRequest($event, city.value)" [disabled]="searchError">Search</button>
+			</span>
+		</div>
+	</form>
+	<div *ngIf="data && !searchError" class="row offset_top">
+		<ul class="list-group" class="col-md-6">
+			<li class="list-group-item active">
+				<span>The weather in
+					<span class="city_titile">{{data.location.city | uppercase}}, {{data.location.country}}</span>
+				</span>
+				<img src="{{imageSrc}}" class="weather_description_image" />
+			</li>
+			<li class="list-group-item">Humidity: {{data.atmosphere.humidity}} ,%</li>
+			<li class="list-group-item">Pressure: {{data.atmosphere.pressure}} ,gPa</li>
+			<li class="list-group-item">Temperature {{data.item.condition.temp}} ,F</li>
+			<li class="list-group-item">Wind speed {{data.wind.speed}} ,mp/h</li>
+		</ul>
+	</div>
+	<div class="alert alert-warning alert-dismissable col-md-6 offset_top" *ngIf="searchError">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true" (click)="reset()">&times;</button>
+		<strong>Warning!</strong> Something is wrong...
+	</div>
+</section>
